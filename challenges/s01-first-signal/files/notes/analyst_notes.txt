@@ -1,0 +1,14 @@
+ANALYST NOTES
+
+Potential identifiers observed so far:
+- NullWave
+- SPECTRAL-7
+- NW-014
+- ghost-fragment
+- FIRST_SIGNAL
+
+The archived fragment appears to be the most reliable source.
+Do not trust filenames alone.
+
+Remember the standard flag format used by the response team:
+SB{SXX_keyword_token}

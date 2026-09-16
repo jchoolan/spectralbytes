@@ -1,0 +1,16 @@
+RECOVERED CONTACT RECORD
+
+Name: N. Vale
+Role: External Communications
+Reference: NW-SPECTRAL-7
+
+Message:
+"If the first signal is confirmed, check the archived fragment.
+The original transmission was never stored under its obvious name."
+
+Archive reference:
+ghost-fragment
+
+Additional note from recovery team:
+The evidence marker uses the stage prefix S01 combined with the
+project codename and a short verification token.

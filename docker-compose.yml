@@ -1,0 +1,43 @@
+services:
+
+  s01:
+    build:
+      context: ./challenges/s01-first-signal
+
+    container_name: spectralbytes-s01
+
+    ports:
+      - "127.0.0.1:2221:22"
+
+    restart: unless-stopped
+
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    cap_add:                    # ← add these
+      - CHOWN
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
+      - SYS_CHROOT
+      - AUDIT_WRITE
+
+    pids_limit: 128
+
+    mem_limit: 256m
+
+    cpus: 0.50
+
+    tmpfs:
+      - /run
+      - /tmp
+
+    networks:
+      - challenge_net
+
+networks:
+  challenge_net:
+    driver: bridge

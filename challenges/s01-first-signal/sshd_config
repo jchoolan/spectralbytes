@@ -1,0 +1,40 @@
+Port 22
+
+Protocol 2
+
+ListenAddress 0.0.0.0
+
+PermitRootLogin no
+
+PasswordAuthentication yes
+
+PubkeyAuthentication no
+
+KbdInteractiveAuthentication no
+
+UsePAM no
+
+PermitEmptyPasswords no
+
+AllowUsers spectral01
+
+MaxAuthTries 3
+
+LoginGraceTime 30
+
+
+X11Forwarding no
+
+AllowTcpForwarding no
+
+AllowAgentForwarding no
+
+PermitTunnel no
+
+ClientAliveInterval 300
+
+ClientAliveCountMax 2
+
+PrintMotd yes
+
+Subsystem sftp internal-sftp

@@ -1,0 +1,15 @@
+RECOVERED TRANSMISSION FRAGMENT
+Source: SPECTRAL-7
+Status: Reconstructed
+
+The first signal was confirmed.
+
+NEXT CHANNEL:
+SPECTRAL02
+
+Verification token recovered from the transmission header:
+a91f20
+
+Note:
+Combine the stage identifier, the project codename, and the
+verification token using the standard SpectralBytes flag format.

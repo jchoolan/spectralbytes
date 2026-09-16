@@ -1,0 +1,16 @@
+NULLWAVE INCIDENT NOTE
+Incident ID: NW-014
+Analyst: A. Perera
+Date: 2026-09-13
+
+A suspicious packet sequence was detected during routine monitoring.
+The transmission appears to have originated from an unidentified
+external source.
+
+Initial investigation indicates that the attacker used the project
+codename:
+
+    FIRST_SIGNAL
+
+Further evidence was transferred to the analyst workstation.
+The contact record may provide another useful clue.
