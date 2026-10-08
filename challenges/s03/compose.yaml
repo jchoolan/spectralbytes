@@ -1,0 +1,38 @@
+services:
+  s03:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: spectralbytes-s03:release
+    container_name: spectralbytes-s03
+    ports:
+      - "2223:2223"
+    networks:
+      - s03_challenge
+    read_only: true
+    tmpfs:
+      - /run
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    privileged: false
+    mem_limit: 256m
+    cpus: "0.50"
+    pids_limit: 128
+    ulimits:
+      nofile:
+        soft: 1024
+        hard: 2048
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"
+    restart: "no"
+
+networks:
+  s03_challenge:
+    name: spectralbytes-s03-internal
+    internal: true

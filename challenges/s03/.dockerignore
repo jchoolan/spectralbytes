@@ -1,0 +1,9 @@
+# Never send facilitator secrets/solvers into the Docker build context
+generate.py
+solve_s03.py
+facilitator/
+tests/
+player_release/
+.git/
+.gitignore
+*.zip

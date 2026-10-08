@@ -1,0 +1,44 @@
+.env
+.env.*
+!.env.example
+secrets/
+**/secrets/
+**/flag.txt
+**/extracted_flag.txt
+**/recovered_flag.txt
+**/__pycache__/
+**/*.pyc
+**/.cache/
+challenges/s02/build/
+challenges/s03/facilitator/
+challenges/s03/generate.py
+challenges/s03/solve_s03.py
+challenges/s03/solve_s03.py
+challenges/s03/player_release/
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+secrets/
+**/secrets/
+
+# Private challenge files
+**/extracted_flag.txt
+**/recovered_flag.txt
+challenges/s02/build/
+challenges/s03/facilitator/
+challenges/s03/solve_s03.py
+challenges/s03/generate.py
+challenges/s03/player_release/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Local files
+*.log
+.DS_Store
+Thumbs.db
+
+challenges/s03/Dockerfile.original

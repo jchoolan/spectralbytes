@@ -1,0 +1,24 @@
+MIDNIGHT RELAY — ARCHIVED PROJECT NOTES
+
+Maintainer: ghostpacket_47
+Project status: Abandoned
+
+Entry 01:
+The relay system was designed to exchange
+encrypted messages between remote endpoints.
+
+Entry 02:
+A backup identifier was recorded in the
+project's metadata.
+
+Entry 03:
+The operator's recovery phrase was split
+into three parts:
+
+Part A: spectral
+Part B: ghost
+Part C: 47
+
+Entry 04:
+The final identifier uses the standard
+SpectralBytes flag format.

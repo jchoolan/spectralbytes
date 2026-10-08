@@ -1,0 +1,15 @@
+S03 — Nonce Once
+=================
+
+Telemetry-A contains a predictable routing record.
+
+Known plaintext for telemetry-a:
+
+ROUTE: S04-PCAP / GATEWAY-7 / incident-transfer-archive.zip / XXXXXXXXXXXXXXXXXXX
+
+Use this known plaintext with ciphertext A to recover the reused AES-CTR
+keystream segment. Then XOR that keystream with ciphertext B.
+
+The AES key is intentionally unavailable.
+
+Do not brute-force AES.

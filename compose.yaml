@@ -1,0 +1,55 @@
+name: spectralbytes-new
+
+services:
+  ctfd:
+    image: spectralbytes-ctfd:postgres
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8090:8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg2://ctfd:${CTFD_DB_PASSWORD}@db:5432/ctfd
+      REDIS_URL: redis://cache:6379
+      SECRET_KEY: ${CTFD_SECRET_KEY}
+      WORKERS: "1"
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_started
+    volumes:
+      - ctfd_uploads:/var/uploads
+      - ctfd_logs:/var/log/CTFd
+    networks:
+      - control
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ctfd
+      POSTGRES_USER: ctfd
+      POSTGRES_PASSWORD: ${CTFD_DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ctfd -d ctfd"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+    networks:
+      - control
+
+  cache:
+    image: redis:7.2-alpine
+    restart: unless-stopped
+    networks:
+      - control
+
+networks:
+  control:
+    driver: bridge
+
+volumes:
+  ctfd_uploads:
+  ctfd_logs:
+  postgres_data:
