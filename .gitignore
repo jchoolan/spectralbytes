@@ -42,3 +42,10 @@ __pycache__/
 Thumbs.db
 
 challenges/s03/Dockerfile.original
+
+# Database backups
+backups/
+*.dump
+
+# Local Compose backups
+compose.yaml.backup
