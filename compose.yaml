@@ -45,8 +45,44 @@ services:
     networks:
       - control
 
+  s04:
+    image: spectralbytes-new-s04:latest
+    container_name: spectralbytes-new-s04
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:2234:22"
+    networks:
+      - challenge_s04
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 128
+
+  s05:
+    image: spectralbytes-new-s05:latest
+    container_name: spectralbytes-new-s05
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8055:5000"
+    networks:
+      - challenge_s05
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 128
+
 networks:
   control:
+    driver: bridge
+
+  challenge_s04:
+    driver: bridge
+    internal: false
+
+  challenge_s05:
     driver: bridge
 
 volumes:
