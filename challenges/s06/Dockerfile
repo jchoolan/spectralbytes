@@ -41,11 +41,8 @@ RUN printf '%s\n' \
     > /etc/ssh/sshd_config.d/ctf.conf
 
 # Player instructions
-RUN printf '%s\n' \
-    'Welcome to SpectralBytes S06 - Root of the Problem' \
-    'Investigate the maintenance process and file permissions.' \
-    'Your objective is to recover the protected evidence flag.' \
-    > /etc/motd
+COPY welcome.txt /etc/motd
+RUN chmod 644 /etc/motd
 
 EXPOSE 22
 

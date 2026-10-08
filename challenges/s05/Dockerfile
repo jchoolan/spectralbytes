@@ -11,6 +11,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app/main.py /app/main.py
+COPY app/theme.py /app/theme.py
 
 RUN chown -R ctf:ctf /app
 

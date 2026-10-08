@@ -1,4 +1,4 @@
-name: spectralbytes-new
+﻿name: spectralbytes-new
 
 services:
   ctfd:
@@ -45,6 +45,42 @@ services:
     networks:
       - control
 
+  s01:
+    image: spectralbytes-s01:latest
+    container_name: spectralbytes-new-s01
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:2231:22"
+    networks:
+      - challenge_s01
+    pids_limit: 128
+    mem_limit: 256m
+    cpus: 0.5
+
+  s02:
+    image: spectralbytes-s02:latest
+    container_name: spectralbytes-new-s02
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:2232:22"
+    networks:
+      - challenge_s02
+    pids_limit: 128
+    mem_limit: 256m
+    cpus: 0.5
+
+  s03:
+    image: spectralbytes-new-s03:latest
+    container_name: spectralbytes-new-s03
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:2233:22"
+    networks:
+      - challenge_s03
+    pids_limit: 128
+    mem_limit: 256m
+    cpus: 0.5
+
   s04:
     image: spectralbytes-new-s04:latest
     container_name: spectralbytes-new-s04
@@ -74,8 +110,52 @@ services:
       - ALL
     pids_limit: 128
 
+  s06:
+    image: spectralbytes-new-s06:latest
+    container_name: spectralbytes-new-s06
+    hostname: spectralbytes-s06
+    restart: unless-stopped
+    networks:
+      - challenge_s06
+    pids_limit: 128
+    mem_limit: 256m
+    cpus: 0.5
+    security_opt:
+      - no-new-privileges:false
+
+  s06-proxy:
+    image: alpine/socat
+    container_name: spectralbytes-new-s06-proxy
+    restart: unless-stopped
+    command:
+      - TCP-LISTEN:2236,fork,reuseaddr
+      - TCP:s06:22
+    ports:
+      - "127.0.0.1:2236:2236"
+    networks:
+      - challenge_s06
+      - s06_ingress
+    depends_on:
+      - s06
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    pids_limit: 64
+    mem_limit: 64m
+
 networks:
   control:
+    driver: bridge
+
+  challenge_s01:
+    driver: bridge
+
+  challenge_s02:
+    driver: bridge
+
+  challenge_s03:
     driver: bridge
 
   challenge_s04:
@@ -85,7 +165,15 @@ networks:
   challenge_s05:
     driver: bridge
 
+  challenge_s06:
+    driver: bridge
+    internal: true
+
+  s06_ingress:
+    driver: bridge
+
 volumes:
   ctfd_uploads:
   ctfd_logs:
   postgres_data:
+

@@ -47,3 +47,8 @@ HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3 \
   CMD python3 -c "import socket; s=socket.socket(); s.settimeout(2); s.connect(('127.0.0.1',22)); s.close()"
 
 CMD ["/usr/sbin/sshd", "-D", "-e"]
+
+# SpectralBytes Stage 03 welcome banner
+COPY welcome.txt /etc/spectralbytes-welcome.txt
+
+RUN printf '\n# Display SpectralBytes welcome message for interactive SSH sessions\nif [[ $- == *i* ]]; then\n    cat /etc/spectralbytes-welcome.txt\nfi\n' >> /home/crypto/.bashrc
