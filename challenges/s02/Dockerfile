@@ -1,10 +1,18 @@
-FROM spectralbytes-ctf-stage02:latest
+FROM ubuntu:24.04
 
-USER root
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN id investigator >/dev/null 2>&1 || useradd -m -s /bin/bash investigator
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        openssh-server \
+        steghide \
+        libimage-exiftool-perl \
+        file \
+        ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN echo 'investigator:GhostPacket2026!' | chpasswd && \
+RUN useradd -m -s /bin/bash investigator && \
+    echo 'investigator:SPECTRAL{spectral_ghost_47}' | chpasswd && \
     mkdir -p /run/sshd /home/investigator/evidence && \
     ssh-keygen -A
 
@@ -14,7 +22,8 @@ COPY motd /etc/motd
 RUN chown -R root:root /home/investigator/evidence && \
     chmod -R a+rX /home/investigator/evidence && \
     chmod 755 /home/investigator && \
-    printf '\nPasswordAuthentication yes\nPermitRootLogin no\n' >> /etc/ssh/sshd_config
+    printf '\nPasswordAuthentication yes\nPermitRootLogin no\nAllowUsers investigator\n' \
+        >> /etc/ssh/sshd_config
 
 EXPOSE 22
 

@@ -32,7 +32,7 @@ FLAG = os.environ.get(
 
 USERS = {
     "analyst": {
-        "password": "Analyst2026!",
+        "password": "SPECTRAL{ghost_traffic_recovered}",
         "name": "Junior Security Analyst"
     }
 }

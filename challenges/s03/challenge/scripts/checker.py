@@ -5,7 +5,7 @@ EXPECTED_PREFIX = (
     b"internal-incident-portal / "
 )
 
-MAX_INPUT_BYTES = 70
+MAX_INPUT_BYTES = 76
 
 
 def main():

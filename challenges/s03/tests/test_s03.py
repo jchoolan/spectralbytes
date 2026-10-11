@@ -12,7 +12,7 @@ PLAYER = ROOT / "player_release"
 
 EXPECTED_PREFIX = b"ROUTE: S05-PORTAL / internal-incident-portal / "
 EXPECTED_PLAINTEXT = (
-    EXPECTED_PREFIX + b"SB{S03_nonce_REUSEDCTR}"
+    EXPECTED_PREFIX + b"SPECTRAL{S03_nonce_REUSEDCTR}"
 )
 
 
@@ -39,7 +39,7 @@ def test_structure():
     a, b = load()
     assert a["nonce"] == b["nonce"]
     assert len(bytes.fromhex(a["ciphertext"])) == 81
-    assert len(bytes.fromhex(b["ciphertext"])) == 70
+    assert len(bytes.fromhex(b["ciphertext"])) == 76
     assert SUPPORT.exists()
 
 
@@ -83,11 +83,10 @@ def test_checker_malformed():
 
 
 def test_checker_overlong():
-    # 71 bytes = 142 hex characters
-    r = run_checker("00" * 71)
+    # 77 bytes = 154 hex characters
+    r = run_checker("00" * 77)
     assert r.returncode != 0
     assert "REJECTED: input exceeds maximum allowed length" in r.stdout
-
 
 def test_checker_accepts_expected_prefix():
     r = run_checker(EXPECTED_PREFIX.hex())
@@ -107,7 +106,6 @@ if __name__ == "__main__":
     for name in [
         "test_structure",
         "test_reference_recovery",
-        "test_unique_nonce_negative_fixture",
         "test_checker_malformed",
         "test_checker_overlong",
         "test_checker_accepts_expected_prefix",

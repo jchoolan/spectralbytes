@@ -9,31 +9,29 @@
        SPECTRALBYTES // OPERATION GHOST PACKET
 ========================================================
 
-             [ STAGE 04 - GHOST TRAFFIC ]
+          [ STAGE 04 - HEARTBEAT IN THE WIRE ]
 
-[+] NETWORK FORENSICS TERMINAL INITIALIZED
-[+] PACKET CAPTURE DETECTED
-[+] INVESTIGATION STATUS: ACTIVE
+Welcome, Forensics Analyst.
 
-WELCOME, FORENSIC ANALYST.
+A suspicious gateway capture has been recovered.
+Hidden within the traffic is evidence of an
+unauthorized communication and file transfer.
 
 MISSION:
-Suspicious network traffic has been intercepted.
-An unknown file was transferred during the incident.
+  1. Analyze the captured network traffic.
+  2. Identify suspicious periodic DNS activity.
+  3. Investigate the associated HTTP transfer.
+  4. Recover the transferred evidence.
+  5. Decrypt the archive using your previous flag.
+  6. Submit the recovered flag to CTFd.
 
-Analyze the captured packets, reconstruct the
-transferred evidence, and recover the hidden flag.
-
-EVIDENCE:
-  ~/evidence/ghost_traffic.pcap
-
-SUGGESTED TOOLS:
-  Wireshark
-  TCP Stream Analysis
-  File Extraction
+GET STARTED:
+  cd ~/challenge
+  ls -la
+  cat README.txt
 
 FLAG FORMAT: SPECTRAL{...}
 
-[!] THE NETWORK NEVER FORGETS.
+[+] ACCESS GRANTED - GOOD LUCK, ANALYST
 
 ========================================================

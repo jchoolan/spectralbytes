@@ -1,7 +1,7 @@
-# SpectralBytes S03 — Nonce Once
+# SpectralBytes S03 â€” Nonce Once
 
 ## Challenge
-Cryptography / Programming — 200 points.
+Cryptography / Programming â€” 200 points.
 
 S03 demonstrates AES-CTR keystream reuse. Two telemetry records use the same
 key and initial counter. The participant recovers the second plaintext with
@@ -37,7 +37,7 @@ The AES key is not present in the player container.
    `keystream = ciphertext_A XOR known_plaintext_A`
 6. Recover plaintext B:
    `plaintext_B = ciphertext_B XOR keystream`
-7. Extract the `SB{...}` flag.
+7. Extract the `SPECTRAL{...}` flag.
 8. Optionally validate the recovered plaintext prefix with `checker.py`.
 9. Submit the exact flag in CTFd.
 

@@ -46,6 +46,9 @@ services:
       - control
 
   s01:
+    build:
+      context: ./challenges/s01
+      dockerfile: Dockerfile
     image: spectralbytes-s01:latest
     container_name: spectralbytes-new-s01
     restart: unless-stopped
@@ -58,6 +61,9 @@ services:
     cpus: 0.5
 
   s02:
+    build:
+      context: ./challenges/s02
+      dockerfile: Dockerfile
     image: spectralbytes-s02:latest
     container_name: spectralbytes-new-s02
     restart: unless-stopped
@@ -70,6 +76,9 @@ services:
     cpus: 0.5
 
   s03:
+    build:
+      context: ./challenges/s03
+      dockerfile: Dockerfile
     image: spectralbytes-new-s03:latest
     container_name: spectralbytes-new-s03
     restart: unless-stopped
@@ -82,7 +91,10 @@ services:
     cpus: 0.5
 
   s04:
-    image: spectralbytes-new-s04:latest
+    build:
+      context: ./challenges/s04
+      dockerfile: Dockerfile
+    image: spectralbytes-s04-v2:latest
     container_name: spectralbytes-new-s04
     restart: unless-stopped
     ports:
@@ -94,6 +106,9 @@ services:
     pids_limit: 128
 
   s05:
+    build:
+      context: ./challenges/s05
+      dockerfile: Dockerfile
     image: spectralbytes-new-s05:latest
     container_name: spectralbytes-new-s05
     restart: unless-stopped
@@ -111,6 +126,9 @@ services:
     pids_limit: 128
 
   s06:
+    build:
+      context: ./challenges/s06
+      dockerfile: Dockerfile
     image: spectralbytes-new-s06:latest
     container_name: spectralbytes-new-s06
     hostname: spectralbytes-s06

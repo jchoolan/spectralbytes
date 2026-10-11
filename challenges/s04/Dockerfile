@@ -1,30 +1,32 @@
-
 FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    openssh-server python3 ca-certificates && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        openssh-server tshark wireshark-common file unzip 7zip sudo openssl \
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /var/run/sshd \
+    && groupadd -f wireshark
 
-RUN useradd -m -s /bin/bash forensics && \
-    echo 'forensics:SpectralS04Lab!' | chpasswd && \
-    mkdir -p /run/sshd /home/forensics/evidence && \
-    chown -R root:root /home/forensics/evidence && \
-    chmod 755 /home/forensics/evidence
+RUN useradd -m -s /bin/bash forensics \
+    && echo 'forensics:SPECTRAL{S03_nonce_REUSEDCTR}' | chpasswd \
+    && usermod -aG wireshark forensics
 
-COPY evidence/ghost_traffic.pcap /home/forensics/evidence/ghost_traffic.pcap
-COPY welcome.txt /etc/motd
+RUN sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config \
+    && sed -i 's/^#\?PermitEmptyPasswords.*/PermitEmptyPasswords no/' /etc/ssh/sshd_config \
+    && sed -i 's/^#\?X11Forwarding.*/X11Forwarding no/' /etc/ssh/sshd_config \
+    && sed -i 's/^#\?AllowTcpForwarding.*/AllowTcpForwarding no/' /etc/ssh/sshd_config
 
-RUN chmod 644 /home/forensics/evidence/ghost_traffic.pcap && \
-    chmod 644 /etc/motd && \
-    printf '%s\n' \
-    'PasswordAuthentication yes' \
-    'PermitRootLogin no' \
-    'AllowUsers forensics' \
-    > /etc/ssh/sshd_config.d/ctf.conf
+COPY challenge/ /home/forensics/challenge/
+RUN chown -R root:root /home/forensics/challenge \
+    && chmod -R a+rX /home/forensics/challenge \
+    && chmod 755 /home/forensics
+
+# SpectralBytes Stage 04 ASCII welcome banner
+COPY welcome.txt /etc/spectralbytes-welcome.txt
+
+# Display the banner during interactive SSH sessions
+RUN printf '\n# SpectralBytes S04 welcome banner\nif [[ $- == *i* ]]; then\n    cat /etc/spectralbytes-welcome.txt\nfi\n' >> /home/forensics/.bashrc
 
 EXPOSE 22
-
-CMD ["/usr/sbin/sshd", "-D", "-e"]
+CMD ["/usr/sbin/sshd", "-D"]

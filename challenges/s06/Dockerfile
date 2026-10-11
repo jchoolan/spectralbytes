@@ -10,7 +10,7 @@ RUN apt-get update && \
 
 # Create the low-privilege player account
 RUN useradd -m -g operator -s /bin/bash operator && \
-    echo 'operator:SpectralS06Lab!' | chpasswd && \
+    echo 'operator:SPECTRAL{broken_object_authorization}' | chpasswd && \
     mkdir -p /run/sshd /opt/spectralbytes/archive
 
 # Install the intentionally vulnerable maintenance script

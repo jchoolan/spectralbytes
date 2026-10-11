@@ -49,3 +49,15 @@ backups/
 
 # Local Compose backups
 compose.yaml.backup
+
+# Local development backups
+*.backup
+*.bak
+*-backup.json
+compose.s04-backup.yaml
+
+# Temporary challenge files
+challenges/s03/live-ciphertexts.json
+
+# Local development experiments
+development/

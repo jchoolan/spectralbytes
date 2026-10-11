@@ -30,7 +30,7 @@ GET STARTED:
 
 Additional investigation files are in ~/scripts.
 
-FLAG FORMAT: SB{...}
+FLAG FORMAT: SPECTRAL{...}
 
 [+] ACCESS GRANTED - GOOD LUCK, ANALYST
 

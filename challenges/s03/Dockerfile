@@ -24,7 +24,7 @@ RUN chown -R root:root /home/crypto/data /home/crypto/scripts && \
               /home/crypto/scripts/*.txt \
               /home/crypto/scripts/checker.py
 
-RUN echo 'crypto:SpectralS03Lab!' | chpasswd && \
+RUN echo 'crypto:SPECTRAL{hidden_in_plain_sight}' | chpasswd && \
     printf '%s\n' \
       'PermitRootLogin no' \
       'PasswordAuthentication yes' \
