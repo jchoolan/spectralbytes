@@ -1,0 +1,9 @@
+S03 — Nonce Once
+
+Hint 1 (-10):
+AES-CTR behaves like plaintext XOR keystream.
+
+Hint 2 (-20):
+Known plaintext XOR ciphertext reveals the matching keystream bytes.
+
+The recovered second plaintext contains the routing instruction and the S03 flag.

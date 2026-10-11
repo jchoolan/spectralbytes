@@ -1,0 +1,18 @@
+SPECTRALBYTES INCIDENT ARCHIVE
+Case: GP-002
+
+Recovered artifact:
+evidence.jpg
+
+Analyst notes:
+The Ghost Operator protected sensitive information
+using names from abandoned projects.
+
+The password is believed to be the name of the
+operator's former relay project.
+
+Password convention:
+Remove spaces and use lowercase letters.
+
+Suggested tool:
+steghide

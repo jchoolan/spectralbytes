@@ -1,0 +1,21 @@
+SPECTRALBYTES INCIDENT ARCHIVE
+Case: GP-001
+Subject: Unknown Operator
+
+During a routine investigation, analysts discovered
+the following fragment from an abandoned profile.
+
+Display name: Ghost Operator
+Username: ghostpacket_47
+Bio: "Every packet leaves a trace."
+
+Last known activity:
+The operator mentioned an old project called
+Midnight Relay.
+
+Investigation note:
+The operator often used the same username across
+different platforms.
+
+Next lead:
+Examine the archived project notes.

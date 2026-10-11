@@ -1,0 +1,18 @@
+SPECTRALBYTES - REMOTE TEAMMATE SETUP
+
+1. Install Docker Desktop and start Docker Engine.
+2. Clone the private SpectralBytes GitHub repository (or extract project ZIP).
+3. Copy START-HERE.bat and Setup-SpectralBytes.ps1 to the folder with compose.yaml.
+4. Double-click START-HERE.bat.
+5. When finished, open http://localhost:8090 for CTFd.
+6. S05 will use http://localhost:18055 if the script changed the port (or 28055 if 18055 was occupied).
+
+If setup fails, send only spectralbytes-diagnostics.txt to your organizer after reviewing it for sensitive information. Do not send .env.
+
+NOTES:
+- The script keeps existing .env values; it creates fresh local values only when .env is missing.
+- It edits compose.yaml ONLY for the S05 8055 host port, and backs up the original.
+- If a custom CTFd image is not available from the repository or registry, the organizer must provide the image or its build source.
+- CTFd challenge configuration and user database are NOT included in the Git repository. Restore a separate CTFd export using a compatible CTFd version.
+- Challenge source can expose flags/passwords. Share only with trusted organizers.
+- Do not run docker compose down -v unless intentionally deleting stored CTFd data.

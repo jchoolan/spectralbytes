@@ -1,0 +1,54 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261011122650
+Username: DESKTOP-IU0NBGK\USER
+RunAs User: DESKTOP-IU0NBGK\USER
+Configuration Name: 
+Machine: DESKTOP-IU0NBGK (Microsoft Windows NT 10.0.26200.0)
+Host Application: powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\USER\Downloads\New folder (4)\Setup-SpectralBytes.ps1
+Process ID: 18968
+PSVersion: 5.1.26100.9168
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9168
+BuildVersion: 10.0.26100.9168
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+=== SpectralBytes Remote Setup ===
+Created private .env with random credentials.
+
+S05 host port changed from 8055 to 18055; backup saved.
+
+Building and starting containers. First run may take several minutes...
+ => => naming to docker.io/library/spectralbytes-new-s05:latest                                                    0.0s
+ => => unpacking to docker.io/library/spectralbytes-new-s05:latest                                                 0.0s
+ => [s05] resolving provenance for metadata file                                                                   0.0s
+[+] up 15/16
+ ✔ Image spectralbytes-s01:latest        Built                                                                      3.2s
+ ✔ Image spectralbytes-s04-v2:latest     Built                                                                      3.3s
+ ✔ Image spectralbytes-new-s06:latest    Built                                                                      3.2s
+ ✔ Image spectralbytes-new-s03:latest    Built                                                                      3.2s
+ ✔ Image spectralbytes-s02:latest        Built                                                                      3.2s
+ ✔ Image spectralbytes-new-s05:latest    Built                                                                      3.3s
+ ✔ Container spectralbytes-new-cache-1   Running                                                                    0.0s
+ ✔ Container spectralbytes-new-s04       Running                                                                    0.0s
+ ✔ Container spectralbytes-new-s06-proxy Running                                                                    0.0s
+ ✔ Container spectralbytes-new-s01       Running                                                                    0.0s
+ ✔ Container spectralbytes-new-s03       Running                                                                    0.0s
+ ✔ Container spectralbytes-new-s06       Running                                                                    0.0s
+ ✔ Container spectralbytes-new-s02       Running                                                                    0.0s
+ ✔ Container spectralbytes-new-db-1      Healthy                                                                   12.1s
+ ✔ Container spectralbytes-new-s05       Started                                                                    0.9s
+ - Container spectralbytes-new-ctfd-1    Starting                                                                  11.7s
+Error response from daemon: ports are not available: exposing port TCP 127.0.0.1:8090 -> 127.0.0.1:0: listen tcp4 127.0.
+0.1:8090: bind: An attempt was made to access a socket in a way forbidden by its access permissions.
+
+What's next:
+    Debug this Compose error with Gordon → docker ai "help me fix this compose error"
+SETUP ERROR: Docker Compose failed to start. See log; possible port conflict or unavailable custom CTFd image.
+**********************
+Windows PowerShell transcript end
+End time: 20261011122708
+**********************

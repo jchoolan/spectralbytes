@@ -1,0 +1,76 @@
+﻿=== STATUS ===
+NAME                          IMAGE                                                                     COMMAND                  SERVICE     CREATED          STATUS                    PORTS
+spectralbytes-new-cache-1     redis:7.2-alpine                                                          "docker-entrypoint.sÔÇª"   cache       15 minutes ago   Up 15 minutes             6379/tcp
+spectralbytes-new-db-1        postgres:16-alpine                                                        "docker-entrypoint.sÔÇª"   db          11 seconds ago   Up 10 seconds (healthy)   5432/tcp
+spectralbytes-new-s01         sha256:bfdb90777b04d904dfbaf3fba84fc99637d68aafbc73eade605a91468f26f7de   "/usr/sbin/sshd -D -e"   s01         8 minutes ago    Up 8 minutes              127.0.0.1:2231->22/tcp
+spectralbytes-new-s02         sha256:8fb00238367b691cabeb52a68a246e22c02aa7f0779201e5938275f622f6ac04   "/usr/sbin/sshd -D -e"   s02         8 minutes ago    Up 8 minutes              127.0.0.1:2232->22/tcp
+spectralbytes-new-s03         sha256:d741392e11129312b845bdef3b658344d947b34962c4e8e36116b038419d5d0a   "/usr/sbin/sshd -D -e"   s03         8 minutes ago    Up 8 minutes (healthy)    127.0.0.1:2233->22/tcp
+spectralbytes-new-s04         sha256:1f97413bac0be6b7b65cc9efe2fc9c1c5d1724f21fe298214ed968254601f295   "/usr/sbin/sshd -D"      s04         8 minutes ago    Up 8 minutes              127.0.0.1:2234->22/tcp
+spectralbytes-new-s05         spectralbytes-new-s05:latest                                              "python main.py"         s05         11 seconds ago   Up 11 seconds             127.0.0.1:18055->5000/tcp
+spectralbytes-new-s06         sha256:01be3d0ec784d75a03fcaf561eeca8ab844c7157ca9ba02b4cd74066b426d5bd   "/bin/bash -c 'cron ÔÇª"   s06         8 minutes ago    Up 8 minutes              22/tcp
+spectralbytes-new-s06-proxy   alpine/socat                                                              "socat TCP-LISTEN:22ÔÇª"   s06-proxy   15 minutes ago   Up 11 minutes             127.0.0.1:2236->2236/tcp
+=== RECENT LOGS ===
+cache-1  | 1:C 11 Oct 2026 06:42:06.174 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+cache-1  | 1:C 11 Oct 2026 06:42:06.174 * Redis version=7.2.16, bits=64, commit=00000000, modified=0, pid=1, just started
+cache-1  | 1:C 11 Oct 2026 06:42:06.174 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+cache-1  | 1:M 11 Oct 2026 06:42:06.174 * monotonic clock: POSIX clock_gettime
+cache-1  | 1:M 11 Oct 2026 06:42:06.175 * Running mode=standalone, port=6379.
+cache-1  | 1:M 11 Oct 2026 06:42:06.176 * Server initialized
+cache-1  | 1:M 11 Oct 2026 06:42:06.177 * Ready to accept connections tcp
+spectralbytes-new-s06  | Server listening on 0.0.0.0 port 22.
+spectralbytes-new-s06  | Server listening on :: port 22.
+spectralbytes-new-s02  | Server listening on 0.0.0.0 port 22.
+spectralbytes-new-s02  | Server listening on :: port 22.
+spectralbytes-new-s01  | Server listening on 0.0.0.0 port 22.
+spectralbytes-new-s01  | Server listening on :: port 22.
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 45352
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 51442
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 35724
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 45504
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 57718
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 45262
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 44190
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 46506
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 50328
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 51472
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 50324
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 48638
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 49722
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 60340
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 45026
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 60118
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 54212
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 55766
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 36978
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 46956
+spectralbytes-new-s05  |  * Serving Flask app 'main'
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 48582
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 43994
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 35488
+spectralbytes-new-s05  |  * Debug mode: off
+spectralbytes-new-s05  | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+spectralbytes-new-s05  |  * Running on all addresses (0.0.0.0)
+spectralbytes-new-s05  |  * Running on http://127.0.0.1:5000
+spectralbytes-new-s05  |  * Running on http://172.23.0.2:5000
+spectralbytes-new-s05  | [33mPress CTRL+C to quit[0m
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 50910
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 35010
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 57262
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 53648
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 38548
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 48874
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 35606
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 57554
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 59014
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 54824
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 33806
+spectralbytes-new-s03  | Connection closed by 127.0.0.1 port 56804
+db-1                   | 
+db-1                   | PostgreSQL Database directory appears to contain a database; Skipping initialization
+db-1                   | 
+db-1                   | 2026-10-11 06:56:57.306 UTC [1] LOG:  starting PostgreSQL 16.14 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+db-1                   | 2026-10-11 06:56:57.306 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db-1                   | 2026-10-11 06:56:57.306 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db-1                   | 2026-10-11 06:56:57.318 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-1                   | 2026-10-11 06:56:57.330 UTC [29] LOG:  database system was shut down at 2026-10-11 06:56:56 UTC
+db-1                   | 2026-10-11 06:56:57.339 UTC [1] LOG:  database system is ready to accept connections
